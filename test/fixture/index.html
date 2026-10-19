@@ -51,7 +51,7 @@
     document.getElementById('boom').onclick = () => { throw new Error('Fixture boom'); };
     document.getElementById('fetch-ok').onclick = () => fetch('/ok.json').catch(() => {});
     document.getElementById('fetch-500').onclick = () => fetch('/api/fail').catch(() => {});
-    document.getElementById('redirect').onclick = () => { location.href = 'http://127.0.0.2:5173/index.html'; };
+    document.getElementById('redirect').onclick = () => { location.href = 'http://127.0.0.2:5199/index.html'; };
   </script>
 </body>
 </html>
