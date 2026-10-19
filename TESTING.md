@@ -86,6 +86,7 @@ Each case lists **steps → expected result**. Mark `[x]` when the expected resu
 | 7.5 | Flag ON but the policy "Browser tools enabled" unchecked | Same as 7.4 |
 | 7.6 | Eval: `browser_eval "document.title"` with eval OFF | Refused "disabled by admin policy" |
 | 7.7 | Turn eval ON: `document.title` works; `document.cookie` is refused (best-effort check) | Title returned; cookie refused. Note: `window['local'+'Storage']` would NOT be caught — this is a known limitation, eval is full page access. |
+| 7.9 | Blocked `127.0.0.2` (7.2 setup): click **Go to redirect target**, then call `browser_console`/`browser_network` on the same tab | The tab is at `about:blank` straight after the click (extension reacts to the navigation itself); console/network are empty, nothing from the blocked page is returned |
 | 7.8 | Turn "response bodies" ON, repeat 4.7 with `include_body:true` | Body (≤4 KB, secrets redacted) appears |
 
 ## 8. Safety against page content
