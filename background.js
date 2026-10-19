@@ -9,7 +9,8 @@ function connect() {
   if (port) return;
   try { port = chrome.runtime.connectNative(HOST); } catch { port = null; return; }
   port.onMessage.addListener(async (msg) => {
-    if (!msg || typeof msg.id !== 'string') return; // e.g. host_error
+    if (msg?.type === 'host_error') { port?.disconnect(); port = null; return; } // no appai session yet; retry on the next alarm
+    if (!msg || typeof msg.id !== 'string') return;
     try {
       const res = await dispatch(msg);
       port?.postMessage({ id: msg.id, ok: true, ...res });
