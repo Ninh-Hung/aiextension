@@ -15,7 +15,9 @@ function connect() {
       const res = await dispatch(msg);
       port?.postMessage({ id: msg.id, ok: true, ...res });
     } catch (err) {
-      port?.postMessage({ id: msg.id, ok: false, error: String(err?.message || err) });
+      // Best effort: lets the CLI re-check the origin even when the command failed.
+      const tab = typeof msg.tab_id === 'number' ? await chrome.tabs.get(msg.tab_id).catch(() => null) : null;
+      port?.postMessage({ id: msg.id, ok: false, error: String(err?.message || err), ...(tab?.url ? { tab_url: tab.url } : {}) });
     }
   });
   port.onDisconnect.addListener(() => { void chrome.runtime.lastError; port = null; });
