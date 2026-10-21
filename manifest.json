@@ -4,8 +4,34 @@
   "version": "0.1.0",
   "description": "Lets the AppAI coding agent (appai CLI) inspect and debug pages in tabs it opens, using your logged-in session.",
   "minimum_chrome_version": "116",
-  "permissions": ["debugger", "tabs", "tabGroups", "nativeMessaging", "storage", "alarms"],
-  "host_permissions": ["<all_urls>"],
-  "background": { "service_worker": "background.js", "type": "module" },
-  "action": { "default_title": "AppAI Browser Debug" }
+  "permissions": [
+    "debugger",
+    "tabs",
+    "tabGroups",
+    "nativeMessaging",
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "AppAI Browser Debug",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
 }
